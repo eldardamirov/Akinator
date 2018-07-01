@@ -8,7 +8,58 @@
 
 #include <iostream>
 #include <string>
+#include "fileIO.h"
 
+struct Node 
+    {
+    std::string data = "";
+    
+    Node* yes = nullptr;
+    Node* no = nullptr;
+    };
+
+class Akinator  
+    {
+    public:
+        Akinator ( bool saveTemp )
+            {
+            save = saveTemp;
+            if ( save == true )
+                {
+                dataStorage = "";
+                }
+                
+            currentNode = root;
+            }
+            
+        void start()
+            {
+            init();
+            }
+    
+    private:
+        bool save = false;
+        std::string dataStorage = NULL;
+    
+        Node* root = nullptr;
+        Node* currentNode = nullptr;
+        
+        void init()
+            {
+            bool toContinue = false;
+            
+            while ( toContinue )
+                {
+                while ( currentNode->no != nullptr && currentNode->yes != nullptr )
+                    {
+                    printf ( "It %s?", currentNode->data.c_str() );
+                    }
+                }
+            
+            }
+        
+        
+    };
 
 
 int main() 
