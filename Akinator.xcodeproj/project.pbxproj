@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		86C04ED820E8CABE00BE1AF8 /* Akinator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Akinator; sourceTree = BUILT_PRODUCTS_DIR; };
 		86C04EDB20E8CABE00BE1AF8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		86C04EE220E8D0D300BE1AF8 /* fileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileIO.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				86C04EDB20E8CABE00BE1AF8 /* main.cpp */,
+				86C04EE220E8D0D300BE1AF8 /* fileIO.h */,
 			);
 			path = Akinator;
 			sourceTree = "<group>";
