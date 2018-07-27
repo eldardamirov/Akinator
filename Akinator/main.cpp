@@ -10,6 +10,15 @@
 #include <string>
 #include "fileIO.h"
 
+enum questionModes
+    {
+    sign, 
+    object, 
+    game,
+    askForSign,
+    askForObject
+    };
+
 struct Node 
     {
     std::string data = "";
@@ -45,68 +54,92 @@ class Akinator
         bool toContinue = true;
     
         Node* root = new Node;
-        Node* currentNode = nullptr;
+        Node* currentNode = root;
+        
         
         void init()
             {
             root->data = "Cat";
             
+            printf (  )
             
             
-            
-            while ( toContinue )
-                {
-                while ( currentNode->no != nullptr && currentNode->yes != nullptr )
-                    {
-                    printf ( "It is %s?\n", currentNode->data.c_str() );
-//                    scanf ( "%s", &currentAnswer );
-                    std::cin >> currentAnswer;
-                    
-                    if ( checkAnswer ( currentAnswer ) )
-                        {
-                        currentNode = currentNode->yes;
-                        }
-                    else
-                        {
-                        currentNode = currentNode->no;
-                        }
-                    }
-                
-//                printf ( "It %s?", currentNode->data.c_str() );
-//                scanf ( "%s", &currentAnswer );
-                
-                if ( checkAnswer ( currentAnswer ) )
-                    {
-                    printf ( "Finished.\n" );
-                    toContinue = false;
-                    }
-                else
-                    {
-                    currentNode->no = new Node;
-                    currentNode->yes = new Node;
-                    
-                    printf ( "Who is it?\n" );
-//                    scanf ( "%s", &currentAnswer );
-                    std::cin >> currentAnswer;
-                    
-                    currentNode->yes->data = currentAnswer;
-                    
-                    printf ( "What is difference between %s and %s?\n", currentNode->data.c_str(), currentAnswer.c_str() );
-//                    scanf ( "%s", &difference );
-                    std::cin >> difference;
-                    
-                    currentNode->no->data = currentNode->data;
-                    currentNode->data = currentAnswer;
-                    
-                    exit();
-                    }
-                
-                }
             
             }
+        
+//        void init()
+//            {
+//            root->data = "Cat";
+////            root->yes = new Node;
+////            root->no = new Node;
+////            
+////            root->yes->data = "Dog";
+////            root->no->data = "Cat";
+////            
+//            
+//            
+//            while ( toContinue )
+//                {                
+////                printf ( "It %s?", currentNode->data.c_str() );
+////                scanf ( "%s", &currentAnswer );
+//                
+//                printf ( "It is %s?\n", currentNode->data.c_str() );
+//                std::cin >> currentAnswer;
+//                
+//                if ( checkAnswer ( currentAnswer ) )
+//                    {
+//                    printf ( "Finished.\n" );
+//                    toContinue = false;
+//                    }
+//                else
+//                    {
+//                    currentNode->no = new Node;
+//                    currentNode->yes = new Node;
+//                    
+//                    printf ( "Who is it?\n" );
+////                    scanf ( "%s", &currentAnswer );
+//                    std::cin >> currentAnswer;
+//                    
+//                    currentNode->yes->data = currentAnswer;
+//                    
+//                    printf ( "What is difference between %s and %s?\n", currentNode->data.c_str(), currentAnswer.c_str() );
+////                    scanf ( "%s", &difference );
+//                    std::cin >> difference;
+//                    
+//                    currentNode->no->data = currentNode->data;
+//                    currentNode->data = currentAnswer;
+//                    
+//                    exit();
+//                    }
+//                
+//                }
+//                
+//            while ( currentNode->no != nullptr && currentNode->yes != nullptr )
+//                    {
+//                    printf ( "It is %s?\n", currentNode->data.c_str() );
+////                    scanf ( "%s", &currentAnswer );
+//                    std::cin >> currentAnswer;
+//                    
+//                    if ( checkAnswer ( currentAnswer ) )
+//                        {
+//                        currentNode = currentNode->yes;
+//                        }
+//                    else
+//                        {
+//                        currentNode = currentNode->no;
+//                        }
+//                    }
+//                
+//            }
+
+        
             
-        bool checkAnswer ( std::string answer )
+        bool checkAnswer()
             {
+            std::string currentAnswer = "";
+            
+            std::cin >> currentAnswer;
+            
             if ( currentAnswer == "y" || currentAnswer == "yes" || currentAnswer == "1" )
                 {
                 return true;
@@ -115,6 +148,49 @@ class Akinator
                 {
                 return false;
                 }
+            }
+            
+        bool askQuestion ( int mode = sign )
+            {
+            std::string currentData = currentNode->data.c_str();
+            
+
+            if ( mode == sign )
+                {
+                printf ( "Does it %s?\n", currentData.c_str() );
+                return checkAnswer();
+                }
+            if ( mode == object )
+                {
+                printf ( "Is it %s?\n", currentData.c_str() );
+                return checkAnswer();
+                }
+            if ( mode == game )
+                {
+                printf ( "Play again?" );
+                return checkAnswer();
+                }
+                
+            return false;
+            }
+            
+        std::string askString ( int mode = askForSign )
+            {
+            std::string answer = "";
+            
+            if ( mode == askForSign )
+                {
+                std::string predicatedData = currentNode->data.c_str();
+                std::string realData = currentNode->yes->data.c_str();
+                
+                printf ( "What are differents between %s and %s?", predicatedData.c_str(), realData.c_str() );
+                
+                std::cin >> answer;
+                return answer;
+                }
+            
+            if (  )
+            
             }
             
         void exit()
