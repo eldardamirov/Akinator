@@ -30,7 +30,7 @@ struct Node
 class Akinator  
     {
     public:
-        Akinator()
+        Akinator ( std::string baseElementTemp = "Cat" )
             {
 //            save = saveTemp;
 //            if ( save == true )
@@ -39,6 +39,7 @@ class Akinator
 //                }
                 
             currentNode = root;
+            baseElement = baseElementTemp;
             }
             
         void start()
@@ -50,20 +51,27 @@ class Akinator
         bool save = false;
 //        std::string dataStorage = "";
         std::string currentAnswer = "";
-        std::string difference = "";
         bool toContinue = true;
+        
+        std::string baseElement = "";
     
         Node* root = new Node;
         Node* currentNode = root;
         
         
+        
         void init()
             {
-            root->data = "Cat";
-            
-            printf (  )
+            root->data = baseElement;
             
             
+            
+            
+            
+            }
+            
+        void goThroughtTree()
+            {
             
             }
         
@@ -189,8 +197,15 @@ class Akinator
                 return answer;
                 }
             
-            if (  )
+            if ( mode == askForObject )
+                {
+                printf ( "What is it?" );
+                
+                std::cin >> answer;
+                return answer;
+                }
             
+            return "";
             }
             
         void exit()
@@ -198,7 +213,7 @@ class Akinator
             std::cout << "Play again?\n";
             
             std::cin >> currentAnswer;
-            if ( checkAnswer ( currentAnswer ) )
+            if ( checkAnswer() )
                 {
                 currentNode = root;
                 }
