@@ -23,6 +23,8 @@ struct Node
     {
     std::string data = "";
     
+    bool isObject = false;
+    
     Node* yes = nullptr;
     Node* no = nullptr;
     };
@@ -62,10 +64,29 @@ class Akinator
         
         void init()
             {
-            root->data = baseElement;
+            currentNode->data = baseElement;
+            currentNode->isObject = true;
             
             
-            
+            while ( toContinue )  
+                {
+                if ( ( currentNode->yes == nullptr ) && ( currentNode->no == nullptr ) )
+                    {
+                    if ( askQuestion ( object ) )
+                        {
+                        if ( askQuestion ( game ) )
+                            {
+                            currentNode = root;
+                            }
+                        else
+                            {
+                            return;
+                            }
+                        }
+                    }
+                
+                
+                }
             
             
             }
@@ -158,7 +179,7 @@ class Akinator
                 }
             }
             
-        bool askQuestion ( int mode = sign )
+        bool askQuestion ( int mode = object )
             {
             std::string currentData = currentNode->data.c_str();
             
