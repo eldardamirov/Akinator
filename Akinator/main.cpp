@@ -27,6 +27,13 @@ struct Node
     
     Node* yes = nullptr;
     Node* no = nullptr;
+    
+    void initBranches()
+        {
+        yes = new Node;
+        no = new Node;
+        }
+    
     };
 
 class Akinator  
@@ -85,10 +92,14 @@ class Akinator
                         }
                     else
                         {
+//                        currentNode->yes = new Node;
+//                        currentNode->no = new Node;
+                        currentNode->initBranches();
+                        
                         currentNode->no->data = currentNode->data;
-                        currentNode->yes->data = askString ( object );
+                        currentNode->yes->data = askString ( askForObject );
                         /// isObject bool !!;
-                        currentNode->data = askString ( sign );
+                        currentNode->data = askString ( askForSign );
                         }
                     }
                 else
@@ -214,7 +225,7 @@ class Akinator
                 }
             if ( mode == game )
                 {
-                printf ( "Play again?" );
+                printf ( "Play again?\n" );
                 return checkAnswer();
                 }
                 
@@ -230,7 +241,7 @@ class Akinator
                 std::string predicatedData = currentNode->data.c_str();
                 std::string realData = currentNode->yes->data.c_str();
                 
-                printf ( "What are differents between %s and %s?", predicatedData.c_str(), realData.c_str() );
+                printf ( "What are differents between %s and %s?\n", predicatedData.c_str(), realData.c_str() );
                 
                 std::cin >> answer;
                 return answer;
