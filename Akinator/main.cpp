@@ -83,6 +83,24 @@ class Akinator
                             return;
                             }
                         }
+                    else
+                        {
+                        currentNode->no->data = currentNode->data;
+                        currentNode->yes->data = askString ( object );
+                        /// isObject bool !!;
+                        currentNode->data = askString ( sign );
+                        }
+                    }
+                else
+                    {
+                    if ( askQuestion ( sign ) )
+                        {
+                        currentNode = currentNode->yes;
+                        }
+                    else
+                        {
+                        currentNode = currentNode->no;
+                        }
                     }
                 
                 
@@ -91,10 +109,10 @@ class Akinator
             
             }
             
-        void goThroughtTree()
-            {
-            
-            }
+//        void goThroughtTree()
+//            {
+//            
+//            }
         
 //        void init()
 //            {
